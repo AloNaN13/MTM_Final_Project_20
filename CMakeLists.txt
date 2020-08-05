@@ -11,4 +11,10 @@ add_executable(MTM_Final_Project_20
         Vertex.cpp
         Vertex.h
         Edge.cpp
-        Edge.h Calculator.cpp Calculator.cpp Calculator.h)
+        Edge.h
+        Calculator.cpp
+        Calculator.cpp
+        Calculator.h
+        Gcalc.cpp
+        Gcalc.h
+        )

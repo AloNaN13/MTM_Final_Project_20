@@ -5,6 +5,7 @@
 #ifndef MTM_FINAL_PROJECT_20_CALCULATOR_H
 #define MTM_FINAL_PROJECT_20_CALCULATOR_H
 
+#include <iostream>
 #include <string>
 #include <algorithm>
 #include <cctype>

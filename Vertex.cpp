@@ -4,6 +4,7 @@
 
 #include "Vertex.h"
 
+#include <iostream>
 #include <string>
 #include <algorithm>
 #include <cctype>

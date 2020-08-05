@@ -10,6 +10,7 @@ using namespace std;
 #include "Vertex.h"
 #include "Edge.h"
 
+#include <iostream>
 #include <string>
 #include <algorithm>
 #include <cctype>
@@ -27,12 +28,61 @@ public:
     Graph(const Graph& v) = default;
     Graph& operator=(const Graph& v) = default;
 
-    Graph& operator+()
+    // to implement
+    Graph& operator+=(const Graph& graph);
+    Graph& operator-=(const Graph& graph);
 
 };
 
 
-Graph operator+()
+Graph& Graph::operator+=(const Graph &graph) {
+
+}
+
+Graph& Graph::operator-=(const Graph &graph) {
+
+}
+
+
+
+Graph operator+(const Graph& graph1, const Graph& graph2) {
+
+}
+
+Graph operator-(const Graph& graph1, const Graph& graph2) {
+
+}
+
+
+Graph operator^(const Graph& graph1, const Graph& graph2){
+
+}
+
+
+Graph operator*(const Graph& graph1, const Graph& graph2) {
+
+}
+
+
+Graph operator!(const Graph& graph1) {
+
+}
+
+
+
+
+
+
+public:
+Complex& operator+=(const Complex& c);
+Complex& operator-=(const Complex& c);
+Complex operator-() const;
+bool operator==(const Complex& c) const;
+};
+ 
+Complex operator+(const Complex& a, const Complex& b);
+Complex operator-(const Complex& a, const Complex& b);
+ 
 
 
 #endif //MTM_FINAL_PROJECT_20_GRAPH_H

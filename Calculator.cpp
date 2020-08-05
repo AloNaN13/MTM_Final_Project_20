@@ -4,6 +4,7 @@
 
 #include "Calculator.h"
 
+#include <iostream>
 #include <string>
 #include <algorithm>
 #include <cctype>
