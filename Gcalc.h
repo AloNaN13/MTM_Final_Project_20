@@ -1,0 +1,8 @@
+//
+// Created by User on 8/5/2020.
+//
+
+#ifndef MTM_FINAL_PROJECT_20_GCALC_H
+#define MTM_FINAL_PROJECT_20_GCALC_H
+
+#endif //MTM_FINAL_PROJECT_20_GCALC_H
