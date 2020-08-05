@@ -3,3 +3,9 @@
 //
 
 #include "Calculator.h"
+
+#include <string>
+#include <algorithm>
+#include <cctype>
+#include <map>
+

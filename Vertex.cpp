@@ -3,3 +3,10 @@
 //
 
 #include "Vertex.h"
+
+#include <string>
+#include <algorithm>
+#include <cctype>
+#include <map>
+
+
