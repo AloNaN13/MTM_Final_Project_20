@@ -6,34 +6,90 @@
 #include <set>
 #include <algorithm>
 #include <string>
-#include <cstring>
+#include <cctype>
 
 //#include "Gcalc.h"
 
+using namespace std;
 
-//void run_gcalc();
+void shell_gcalc();
 
 
 main() {
-
-    //char x1[5] = "x1";
-    //char x2[5] = "x2";
-    //std::string s();
-    //std::strcat(s, "<");
-    //std::strcat(s, x1);
-    //std::strcat(s, ",");
-    //std::strcat(s, x2);
-    //std::strcat(s, ">");
-
-
-    std::string x1("x1");
-    std::string x2("x2");
-    std::string s("");
-    s = "<" + x1 + "," + x2 + ">";
-    std::cout << s << std::endl;
-    //shell_gcalc();
+    shell_gcalc();
     return 0;
 }
+
+
+
+
+
+void shell_gcalc(){
+    int opcode = 1;
+            // opcode == 1 -> shell
+            // opcode == 2 -> txt
+    if(opcode == 1){
+
+        string input;
+        cin >> input;
+
+
+        cout << 
+
+        /*int x = 0;
+        while(x >= 0){
+            cout << "Gcalc> ";
+            cin >> x;
+            cout << "x+7 is now: " << x+7 << endl;
+        }
+         */
+    }
+    if(opcode == 2){
+        // txt
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -80,16 +136,4 @@ main() {
 
 
 
-
-
-/*
-void shell_gcalc(){
-    int x = 0;
-    while(x >= 0){
-        std::cout << "Gcalc> ";
-        std::cin >> x;
-        std::cout << "x+7 is now: " << x+7 << std::endl;
-    }
-}
-*/
 

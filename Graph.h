@@ -150,21 +150,22 @@ ostream& operator<<(ostream& os, const Graph& graph) {
     for(set<Vertex>::iterator i = graph.vertices.begin(); i !=  graph.vertices.end(); ++i){
         cout << i->getName() << endl;
     }
+
+    cout << '$' << endl;
+
     for(set<Edge>::iterator j = graph.edges.begin(); j !=  graph.edges.end(); ++j){
         string s = j->getName();
-        for(string::iterator i = s.begin(); s != s.end(); ++s){
-            if(*i != '<' && *i != ',' && *i != '>'){
-                cout << *i;
+        for(string::iterator it = s.begin(); it != s.end(); ++it){
+            if(*it != '<' && *it != ',' && *it != '>'){
+                cout << *it;
             }
-            if(*i == ','){
+            if(*it == ','){
                 cout << ' ';
             }
         }
+        cout << endl;
     }
-
-    //const char* sign = c.im < 0 ? "-" : "+";
-    //return os << c.re << sign << c.im << "i";
-
+    
     return os;
 }
 
