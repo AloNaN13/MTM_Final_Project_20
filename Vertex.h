@@ -12,6 +12,7 @@ using namespace std;
 #include <algorithm>
 #include <cctype>
 #include <map>
+#include <set>
 
 
 class Vertex {
@@ -22,6 +23,8 @@ public:
     ~Vertex() = default;
     Vertex(const Vertex& v) = default;
     Vertex& operator=(const Vertex& v) = default;
+
+    string getName() {return this->v_name;};
 };
 
 #endif //MTM_FINAL_PROJECT_20_VERTEX_H

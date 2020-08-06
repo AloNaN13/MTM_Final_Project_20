@@ -12,6 +12,7 @@ using namespace std;
 #include <algorithm>
 #include <cctype>
 #include <map>
+#include <set>
 
 
 class Edge {
@@ -20,8 +21,11 @@ private:
 public:
     explicit Edge(string s) : e_name(s) {};
     ~Edge() = default;
-    Edge(const Edge& v) = default;
-    Edge& operator=(const Edge& v) = default;
+    Edge(const Edge& e) = default;
+    Edge& operator=(const Edge& e) = default;
+
+    string getName() {return this->e_name;};
 };
+
 
 #endif //MTM_FINAL_PROJECT_20_EDGE_H

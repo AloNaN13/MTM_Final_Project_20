@@ -6,15 +6,15 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(.)
 
 add_executable(MTM_Final_Project_20
-        Graph.cpp
-        Graph.h
-        Vertex.cpp
-        Vertex.h
-        Edge.cpp
-        Edge.h
-        Calculator.cpp
-        Calculator.cpp
-        Calculator.h
+        #Graph.cpp
+        #Graph.h
+        #Vertex.cpp
+        #Vertex.h
+        #Edge.cpp
+        #Edge.h
+        #Calculator.cpp
+        #Calculator.cpp
+        #Calculator.h
         Gcalc.cpp
-        Gcalc.h
+        #Gcalc.h
         )
