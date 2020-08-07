@@ -17,17 +17,20 @@ using namespace std;
 enum name {ALON, AMIT, AVI, ROTEM};
 
 int main(){
-    int i;
-    name what = ALON;
-    for(i=0; i<4;++i){
-        if(what==ALON){
-            cout << "ALON!" << endl;
-            what = AMIT;
+
+    string str;
+    getline(cin, str);
+    string::iterator it = str.begin();
+
+    while(1){
+        if(*it == 32){
+            cout << "GOT HERE" << endl;
+            break;
         }
-        else{
-            cout << "NOT ALON..." << endl;
-        }
+        cout << *it << endl;
+        it++;
     }
+
     return 0;
 }
 
