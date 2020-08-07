@@ -24,7 +24,7 @@ public:
     Edge(const Edge& e) = default;
     Edge& operator=(const Edge& e) = default;
 
-    string getName() {return this->e_name;};
+    string getName() const {return this->e_name;};
 };
 
 

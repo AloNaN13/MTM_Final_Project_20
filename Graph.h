@@ -36,7 +36,7 @@ private:
     set<Vertex, CompareByName<Vertex>> vertices;
     set<Edge, CompareByName<Edge>> edges;
 public:
-    explicit Graph(string s) : graph_name(s), vertices(nullptr), edges(nullptr) {};
+    explicit Graph(string s) : graph_name(s), vertices(nullptr), edges(nullptr){};
     // 3 param ctor?
     ~Graph() = default;
     Graph(const Graph& v) = default;
@@ -54,7 +54,7 @@ public:
     friend Graph operator*(const Graph& graph1, const Graph& graph2);
     friend Graph operator^(const Graph& graph1, const Graph& graph2);
 
-    string getName() {return this->graph_name};
+    string getName() const {return this->graph_name};
     friend ostream& operator<<(ostream& os, const Graph& graph);
 
     void insertVertexByName(string v_name){
@@ -165,7 +165,7 @@ ostream& operator<<(ostream& os, const Graph& graph) {
         }
         cout << endl;
     }
-    
+
     return os;
 }
 

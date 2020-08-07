@@ -16,14 +16,31 @@
 using namespace std;
 
 
+
 class Calc {
 private:
-    set<Graph, CompareByName> graphs;
+    set<Graph, CompareByName> calc_graphs;
+    set<Vertex, CompareByName> calc_vertices;
+    set<Edge, CompareByName> calc_edges;
+
+    set<string> calc_functions;
+    set<string> calc_operators;
+
+    // extra chars?
+
+
 public:
-    Graph() : graphs(nullptr) {};
+    Graph() : calc_graphs(nullptr), calc_vertices(nullptr), calc_edges(nullptr),
+              calc_functions({"print", "who", "delete", "reset", "quit"}),
+              calc_operators("+", "-", "^", "*", "!") {};
     ~Graph() = default;
     Graph(const Graph& v) = default;
     Graph& operator=(const Graph& v) = default;
+
+
+    Graph& getGraphFromName(string graph_name) const{
+        return *calc_graphs.find(graph_name);
+    };
 
     //implement funcs from HW
     void print(const Graph& graph){
@@ -34,17 +51,19 @@ public:
         delete(graph);
     };
 
-    void who(const Graph& graph){
-
+    void who() const{
+        for(set<Graph>::iterator i = calc_graphs.begin() ; i !=  calc_graphs.end(); ++i){
+            cout << i->getName() << endl;
+        }
     };
 
     void reset(){
-        for(set<Graph>::iterator i = graphs.begin(); i != graphs.end(); ++i) {
+        for(set<Graph>::iterator i = calc_graphs.begin(); i != calc_graphs.end(); ++i) {
             delete (i);
         }
     }
 
-    quit
+    //quit
 
 };
 

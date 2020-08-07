@@ -24,7 +24,7 @@ public:
     Vertex(const Vertex& v) = default;
     Vertex& operator=(const Vertex& v) = default;
 
-    string getName() {return this->v_name;};
+    string getName() const {return this->v_name;};
 };
 
 #endif //MTM_FINAL_PROJECT_20_VERTEX_H
