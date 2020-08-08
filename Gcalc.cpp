@@ -10,16 +10,19 @@
 #include <cctype>
 
 //#include "Gcalc.h"
-//#include "Calculator.h"
+#include "Calculator.h"
 
 using namespace std;
 
 void shellGcalc();
 void batchGcalc();
 
-bool parseString();
+bool parseString(Calc gcalc);
 bool isCharValid(char c);
 bool isOpValid(char c);
+
+void performFunction(Calc gcalc, string func, string dest);
+
 
 enum State{
     ERROR,
@@ -39,7 +42,22 @@ int main() {
 
 void shellGcalc() {
     bool to_quit = false;
-    parseString();
+
+    //ADDING SOME GRAPHS TO TEST
+    Calc gcalc;
+    gcalc.insertGraphByName("a");
+    gcalc.insertGraphByName("b");
+    gcalc.insertGraphByName("c");
+    gcalc.getGraphFromName("b").insertVertexByName("x1");
+    gcalc.getGraphFromName("b").insertVertexByName("x2");
+    gcalc.getGraphFromName("b").insertEdgeByName("<x1,x2>");
+    gcalc.getGraphFromName("c").insertVertexByName("x1");
+    gcalc.getGraphFromName("c").insertVertexByName("x3");
+    gcalc.getGraphFromName("c").insertVertexByName("<x1,x3>");
+
+    //END OF TEST
+
+    parseString(gcalc);
     // the loop for the shell
     /* while(!quit*) {  // write it as needed
         cout << "Gcalc> ";
@@ -51,11 +69,9 @@ void shellGcalc() {
 }
 
 
-bool parseString() {
+bool parseString(Calc gcalc) {
 
     // remember to write a while loop for prompting the shell
-
-    //Calc gcalc;
 
     string input;
     getline(cin, input);
@@ -355,8 +371,9 @@ bool parseString() {
     // PRINTS FOR TESTS
 
     if(op_code == FUNCTION){
-        cout << *function_vec.begin() << endl;
-        cout << *dest_graph_vec.begin() << endl;
+        performFunction(gcalc, *function_vec.begin(), *dest_graph_vec.begin());
+        //cout << *function_vec.begin() << endl;
+        //cout << *dest_graph_vec.begin() << endl;
     }
 
     vector<string>::iterator op_iter = op_graphs_vec.begin();
@@ -390,6 +407,16 @@ bool isOpValid(char c){
 
 
 
+
+
+
+void performFunction(Calc gcalc, string func, string dest){
+    if(func == "print"){
+        cout << "GOT HERE" << endl;
+        Graph dest_graph = gcalc.getGraphFromName(dest);
+        gcalc.print(dest_graph);
+    }
+}
 
 
 
