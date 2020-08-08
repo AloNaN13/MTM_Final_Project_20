@@ -38,8 +38,8 @@ public:
     explicit Graph(string s) : graph_name(s){};
     // 3 param ctor?
     ~Graph() = default;
-    Graph(const Graph& v) = default;
-    Graph& operator=(const Graph& v) = default;
+    Graph(const Graph& g) = default;
+    Graph& operator=(const Graph& g) = default;
 
     /*
     // to implement

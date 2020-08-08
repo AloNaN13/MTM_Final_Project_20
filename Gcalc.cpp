@@ -56,6 +56,10 @@ void shellGcalc() {
     gcalc.getGraphFromName("c").insertVertexByName("x3");
     gcalc.getGraphFromName("c").insertEdgeByName("<x1,x3>");
 
+    gcalc.getGraphFromName("c").insertVertexByName("x2");
+    gcalc.getGraphFromName("c").insertEdgeByName("<x1,x2>");
+
+
     //END OF TEST
 
     parseString(gcalc);
@@ -377,15 +381,22 @@ bool parseString(Calc gcalc) {
         //cout << *dest_graph_vec.begin() << endl;
     }
 
-    //vector<string>::iterator op_iter = op_graphs_vec.begin();
     if(op_code == OPERATION){
-        performOperation(gcalc, *operations_vec.begin(), *op_graphs_vec.begin(),
-                        *(op_graphs_vec.begin()+1), *dest_graph_vec.begin());
+        if(*operations_vec.begin() == '!'){
+            performOperation(gcalc, *operations_vec.begin(), *op_graphs_vec.begin(),
+                            *op_graphs_vec.begin(), *dest_graph_vec.begin());
+        } else {
+            performOperation(gcalc, *operations_vec.begin(), *op_graphs_vec.begin(),
+                             *(op_graphs_vec.begin()+1), *dest_graph_vec.begin());
+        }
+
+        // printing tests
+
+        //vector<string>::iterator op_iter = op_graphs_vec.begin();
+        //cout << "what is actually inside: " << endl;
         //cout << *dest_graph_vec.begin() << endl;
-        //cout << *operations_vec.begin() << endl;
-        //cout << *op_iter << endl;
-        //op_iter++;
-        //cout << *op_iter << endl;
+        //cout << "=" << endl;
+        //cout << *op_iter << *operations_vec.begin() << *(op_iter+1) << endl;
     }
 
     // END OF PRINTS FOR TESTS
@@ -422,15 +433,31 @@ void performFunction(Calc gcalc, string func, string dest){
 
 
 void performOperation(Calc gcalc, char op, string operand1, string operand2, string opee){
+    Graph& operand1_graph = gcalc.getGraphFromName(operand1);
+    Graph& operand2_graph = gcalc.getGraphFromName(operand2);
+    Graph& opee_graph = gcalc.getGraphFromName(opee);
     if(op == '+'){
-        Graph& operand1_graph = gcalc.getGraphFromName(operand1);
-        Graph& operand2_graph = gcalc.getGraphFromName(operand2);
-        Graph& opee_graph = gcalc.getGraphFromName(opee);
-        opee_graph = operand1_graph + operand2_graph;
-
-        // print for test
-        performFunction(gcalc, "print", "a");
+        cout << opee_graph.getName() << " " << operand1_graph.getName() << " " << operand2_graph.getName() << endl;
+        Graph new_graph = operand1_graph + operand2_graph;
+        opee_graph = new_graph;
     }
+    else if(op == '-'){
+        opee_graph = operand1_graph - operand2_graph;
+    }
+    else if(op == '^'){
+        opee_graph = operand1_graph ^ operand2_graph;
+    }
+    else if(op == '!'){
+        opee_graph = !operand1_graph;
+    }
+/*
+    else if(op == '*'){
+
+    }*/
+    // print for test
+
+    performFunction(gcalc, "print", "a");
+
 }
 
 

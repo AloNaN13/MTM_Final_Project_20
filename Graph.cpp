@@ -13,34 +13,35 @@
 
 Graph operator+(const Graph& graph1, const Graph& graph2) {
 
+    Graph unioned_graph("unioned_graph");
+    set_union(graph1.vertices.begin(), graph1.vertices.end(),
+                   graph2.vertices.begin(), graph2.vertices.end(),
+                   inserter(unioned_graph.vertices, unioned_graph.vertices.begin()), CompareByName<Vertex>());
+
+    set_union(graph1.edges.begin(), graph1.edges.end(),
+                   graph2.edges.begin(), graph2.edges.end(),
+                   inserter(unioned_graph.edges, unioned_graph.edges.begin()), CompareByName<Edge>());
+
+    return unioned_graph;
+    /*
     Graph unioned_graph = graph1;
     unioned_graph.vertices.insert(graph2.vertices.begin(),graph2.vertices.end());
     unioned_graph.edges.insert(graph2.edges.begin(),graph2.edges.end());
     return unioned_graph;
-
-
-    /*set_union(graph1.vertices.begin(), graph1.vertices.end(),
-            graph2.vertices.begin(), graph2.vertices.end(),
-            unioned_graph.vertices.begin(), CompareByName<Vertex>());
-
-    set_union(graph1.edges.begin(), graph1.edges.end(),
-              graph2.edges.begin(), graph2.edges.end(),
-              unioned_graph.edges.begin(), CompareByName<Edge>());
-*/
-    return unioned_graph;
+     */
 }
 
 Graph operator-(const Graph& graph1, const Graph& graph2) {
 
     Graph diff_graph("diff_graph");
-/*    set_union(graph1.vertices.begin(), graph1.vertices.end(),
+    set_difference(graph1.vertices.begin(), graph1.vertices.end(),
               graph2.vertices.begin(), graph2.vertices.end(),
-              diff_graph.vertices.begin(), CompareByName<Vertex>());
+              inserter(diff_graph.vertices, diff_graph.vertices.begin()), CompareByName<Vertex>());
 
-    set_union(graph1.edges.begin(), graph1.edges.end(),
+    set_difference(graph1.edges.begin(), graph1.edges.end(),
               graph2.edges.begin(), graph2.edges.end(),
-              diff_graph.edges.begin(), CompareByName<Edge>());
-*/
+              inserter(diff_graph.edges, diff_graph.edges.begin()), CompareByName<Edge>());
+
     return diff_graph;
 
 }
@@ -49,14 +50,16 @@ Graph operator-(const Graph& graph1, const Graph& graph2) {
 Graph operator^(const Graph& graph1, const Graph& graph2){
 
     Graph intersection_graph("intersection_graph");
-/*    set_union(graph1.vertices.begin(), graph1.vertices.end(),
+    set_intersection(graph1.vertices.begin(), graph1.vertices.end(),
               graph2.vertices.begin(), graph2.vertices.end(),
-              intersection_graph.vertices.begin(), CompareByName<Vertex>());
+              inserter(intersection_graph.vertices, intersection_graph.vertices.begin()),
+              CompareByName<Vertex>());
 
-    set_union(graph1.edges.begin(), graph1.edges.end(),
+    set_intersection(graph1.edges.begin(), graph1.edges.end(),
               graph2.edges.begin(), graph2.edges.end(),
-              intersection_graph.edges.begin(), CompareByName<Edge>());
-*/
+              inserter(intersection_graph.edges, intersection_graph.edges.begin()),
+              CompareByName<Edge>());
+
     return intersection_graph;
 
 }
