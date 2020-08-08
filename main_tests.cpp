@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <set>
+#include <vector>
 #include <algorithm>
 #include <string>
 #include <cctype>
@@ -14,22 +15,29 @@
 using namespace std;
 
 
-enum name {ALON, AMIT, AVI, ROTEM};
-
 int main(){
 
-    string str;
-    getline(cin, str);
-    string::iterator it = str.begin();
+    vector<string> vec;
 
-    while(1){
-        if(*it == 32){
-            cout << "GOT HERE" << endl;
-            break;
-        }
-        cout << *it << endl;
-        it++;
-    }
+    string empty_word;
+
+    string a("alon ");
+    string b("loves ");
+    string c("gavnatz.");
+
+    vec.push_back(a);
+    a = empty_word;
+    vec.push_back(b);
+    b = empty_word;
+    vec.push_back(c);
+    c = empty_word;
+
+    vector<string>::iterator it = vec.begin();
+    cout << *it;
+    it++;
+    cout << *it;
+    it++;
+    cout << *it;
 
     return 0;
 }
