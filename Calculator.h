@@ -19,8 +19,8 @@ using namespace std;
 
 class Calc {
 private:
-    //map<Graph, CompareByName<Graph>> calc_graphs;
-    set<Graph, CompareByName<Graph>> calc_graphs;
+    map<string, Graph> calc_graphs;
+    //set<Graph, CompareByName<Graph>> calc_graphs;
     set<Vertex, CompareByName<Vertex>> calc_vertices;
     set<Edge, CompareByName<Edge>> calc_edges;
 
@@ -40,16 +40,16 @@ public:
 
     Graph& getGraphFromName(string graph_name) {
         Graph graph_to_find(graph_name);
-        return *calc_graphs.find(graph_to_find);
+        return calc_graphs.find(graph_name)->second;
     };
 
     void insertGraphByName(string g_name){
         Graph graph(g_name);
-        calc_graphs.insert(graph);
+        calc_graphs.insert({g_name, graph});
     }
     void removeGraphByName(string g_name){
         Graph graph(g_name);
-        calc_graphs.erase(graph);
+        calc_graphs.erase(g_name);
     };
 
     //implement funcs from HW
@@ -61,9 +61,10 @@ public:
     //    delete(graph);
     //};
 
+
     void who() const{
-        for(set<Graph>::iterator i = calc_graphs.begin() ; i !=  calc_graphs.end(); ++i){
-            cout << i->getName() << endl;
+        for(auto it = calc_graphs.begin(); it !=  calc_graphs.end(); ++it){
+            cout << it->second.getName() << endl;
         }
     };
 

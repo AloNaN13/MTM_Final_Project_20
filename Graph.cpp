@@ -13,7 +13,12 @@
 
 Graph operator+(const Graph& graph1, const Graph& graph2) {
 
-    Graph unioned_graph("unioned_graph");
+    Graph unioned_graph = graph1;
+    unioned_graph.vertices.insert(graph2.vertices.begin(),graph2.vertices.end());
+    unioned_graph.edges.insert(graph2.edges.begin(),graph2.edges.end());
+    return unioned_graph;
+
+
     /*set_union(graph1.vertices.begin(), graph1.vertices.end(),
             graph2.vertices.begin(), graph2.vertices.end(),
             unioned_graph.vertices.begin(), CompareByName<Vertex>());

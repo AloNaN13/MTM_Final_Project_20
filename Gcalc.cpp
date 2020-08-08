@@ -22,6 +22,7 @@ bool isCharValid(char c);
 bool isOpValid(char c);
 
 void performFunction(Calc gcalc, string func, string dest);
+void performOperation(Calc gcalc, char op, string operand1, string operand2, string opee);
 
 
 enum State{
@@ -53,7 +54,7 @@ void shellGcalc() {
     gcalc.getGraphFromName("b").insertEdgeByName("<x1,x2>");
     gcalc.getGraphFromName("c").insertVertexByName("x1");
     gcalc.getGraphFromName("c").insertVertexByName("x3");
-    gcalc.getGraphFromName("c").insertVertexByName("<x1,x3>");
+    gcalc.getGraphFromName("c").insertEdgeByName("<x1,x3>");
 
     //END OF TEST
 
@@ -376,13 +377,15 @@ bool parseString(Calc gcalc) {
         //cout << *dest_graph_vec.begin() << endl;
     }
 
-    vector<string>::iterator op_iter = op_graphs_vec.begin();
+    //vector<string>::iterator op_iter = op_graphs_vec.begin();
     if(op_code == OPERATION){
-        cout << *dest_graph_vec.begin() << endl;
-        cout << *operations_vec.begin() << endl;
-        cout << *op_iter << endl;
-        op_iter++;
-        cout << *op_iter << endl;
+        performOperation(gcalc, *operations_vec.begin(), *op_graphs_vec.begin(),
+                        *(op_graphs_vec.begin()+1), *dest_graph_vec.begin());
+        //cout << *dest_graph_vec.begin() << endl;
+        //cout << *operations_vec.begin() << endl;
+        //cout << *op_iter << endl;
+        //op_iter++;
+        //cout << *op_iter << endl;
     }
 
     // END OF PRINTS FOR TESTS
@@ -412,12 +415,23 @@ bool isOpValid(char c){
 
 void performFunction(Calc gcalc, string func, string dest){
     if(func == "print"){
-        cout << "GOT HERE" << endl;
         Graph dest_graph = gcalc.getGraphFromName(dest);
         gcalc.print(dest_graph);
     }
 }
 
+
+void performOperation(Calc gcalc, char op, string operand1, string operand2, string opee){
+    if(op == '+'){
+        Graph& operand1_graph = gcalc.getGraphFromName(operand1);
+        Graph& operand2_graph = gcalc.getGraphFromName(operand2);
+        Graph& opee_graph = gcalc.getGraphFromName(opee);
+        opee_graph = operand1_graph + operand2_graph;
+
+        // print for test
+        performFunction(gcalc, "print", "a");
+    }
+}
 
 
 
