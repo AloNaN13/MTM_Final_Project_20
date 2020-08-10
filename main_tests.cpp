@@ -3,11 +3,13 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include <set>
 #include <vector>
 #include <algorithm>
 #include <string>
 #include <cctype>
+
 
 //#include "Gcalc.h"
 
@@ -17,27 +19,31 @@ using namespace std;
 
 int main(){
 
-    vector<string> vec;
+    ifstream in_file;
+    ofstream out_file;
+    string mystring;
 
-    string empty_word;
+    in_file.open ("in_test.txt");
+    out_file.open ("out_test.txt");
+    //getline(myfile, mystring);
 
-    string a("alon ");
-    string b("loves ");
-    string c("gavnatz.");
+    for(string line; getline(in_file, mystring); )
+    {
+        cout << "letter: ";
+        if(mystring == "a"){
+            cout << "small A";
+        }
+        if(mystring == "b"){
+            cout << "small B";
+        }
+        cout << endl;
+    }
 
-    vec.push_back(a);
-    a = empty_word;
-    vec.push_back(b);
-    b = empty_word;
-    vec.push_back(c);
-    c = empty_word;
+    //cout << mystring << endl;
 
-    vector<string>::iterator it = vec.begin();
-    cout << *it;
-    it++;
-    cout << *it;
-    it++;
-    cout << *it;
+    //myfile << "Writing AAAAAAAAAAAAAAAAAA to a file.\n";
+    in_file.close();
+    out_file.close();
 
     return 0;
 }

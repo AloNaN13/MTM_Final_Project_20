@@ -15,6 +15,6 @@ add_executable(MTM_Final_Project_20
         Calculator.cpp
         Calculator.h
         Gcalc.cpp
-        #Gcalc.h
+        Gcalc.h
         #main_tests.cpp
         )

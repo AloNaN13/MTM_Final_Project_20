@@ -23,12 +23,7 @@ Graph operator+(const Graph& graph1, const Graph& graph2) {
                    inserter(unioned_graph.edges, unioned_graph.edges.begin()), CompareByName<Edge>());
 
     return unioned_graph;
-    /*
-    Graph unioned_graph = graph1;
-    unioned_graph.vertices.insert(graph2.vertices.begin(),graph2.vertices.end());
-    unioned_graph.edges.insert(graph2.edges.begin(),graph2.edges.end());
-    return unioned_graph;
-     */
+
 }
 
 Graph operator-(const Graph& graph1, const Graph& graph2) {

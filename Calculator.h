@@ -6,6 +6,7 @@
 #define MTM_FINAL_PROJECT_20_CALCULATOR_H
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <algorithm>
 #include <cctype>
@@ -46,6 +47,9 @@ public:
     void insertGraphByName(string g_name){
         Graph graph(g_name);
         calc_graphs.insert({g_name, graph});
+    }
+    void insertGraphByElement(Graph& graph){
+        calc_graphs.insert({graph.getName(), graph});
     }
     void removeGraphByName(string g_name){
         Graph graph(g_name);
